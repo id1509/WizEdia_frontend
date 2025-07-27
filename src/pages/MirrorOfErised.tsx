@@ -65,7 +65,7 @@ const MirrorOfErised: React.FC = () => {
   };
 
   const fetchDailyQuote = async () => {
-    const data = await fetchQuote('http://localhost:5000/api/erised/daily');
+    const data = await fetchQuote('https://wizedia-backend-2.onrender.com/api/erised/daily');
     if (data) {
       setQuoteState({
         quote: data.quote,
@@ -77,7 +77,7 @@ const MirrorOfErised: React.FC = () => {
   };
 
   const fetchThemedQuote = async (theme: string) => {
-    const data = await fetchQuote(`http://localhost:5000/api/erised/themed?theme=${theme}&limit=1`);
+    const data = await fetchQuote(`https://wizedia-backend-2.onrender.com/api/erised/themed?theme=${theme}&limit=1`);
     if (data && data.quotes.length > 0) {
       setQuoteState({
         quote: data.quotes[0].text,
@@ -89,7 +89,7 @@ const MirrorOfErised: React.FC = () => {
 
   const fetchPersonalizedQuote = async () => {
     const params = new URLSearchParams({ mood: selectedMood, context: 'personal growth', house: selectedHouse });
-    const data = await fetchQuote(`http://localhost:5000/api/erised/quote?${params}`);
+    const data = await fetchQuote(`https://wizedia-backend-2.onrender.com/api/erised/quote?${params}`);
     if (data) {
         // The personalized quote is often a long string with explanation, so we just use that.
         setQuoteState({ quote: data.quote, author: `Wisdom for a ${data.house}` });
@@ -101,7 +101,7 @@ const MirrorOfErised: React.FC = () => {
     fetchDailyQuote();
     // Fetch available themes for the dropdown
     const getThemes = async () => {
-        const data = await fetchQuote('http://localhost:5000/api/erised/themed?theme=courage');
+        const data = await fetchQuote('https://wizedia-backend-2.onrender.com/api/erised/themed?theme=courage');
         if (data?.available_themes) setAvailableThemes(data.available_themes);
     };
     getThemes();
@@ -113,7 +113,7 @@ const MirrorOfErised: React.FC = () => {
     setIsGenerating(true);
     setQuoteError(null);
     try {
-        const response = await fetch('http://localhost:5000/api/erised/custom', {
+        const response = await fetch('https://wizedia-backend-2.onrender.com/api/erised/custom', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ situation: newGoal, goal: newGoal, challenge: 'overcoming self-doubt', style: 'inspiring' })
