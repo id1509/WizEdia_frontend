@@ -80,7 +80,7 @@ const Source: React.FC = () => {
 
     try {
       // Send POST request to backend
-      const response = await fetch('http://localhost:5000/api/library/compare-sources', {
+      const response = await fetch('https://wizedia-backend-2.onrender.com/api/library/compare-sources', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
