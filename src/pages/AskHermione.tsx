@@ -46,7 +46,7 @@ const AskHermione: React.FC = () => {
     setIsTyping(true);
 
     try {
-      const response = await fetch('https://wizedia-backend.onrender.com', {
+      const response = await fetch('https://wizedia-backend.onrender.com/api/hermione/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
