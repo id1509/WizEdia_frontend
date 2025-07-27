@@ -149,7 +149,7 @@ const ProfessorPods: React.FC = () => {
     setApiState('mcgonagall', true, null);
     try {
       const params = new URLSearchParams({ subject: mcgSubject, level: mcgLevel, learning_style: mcgLearningStyle });
-      const response = await fetch(`http://localhost:5000/api/pods/recommend?${params}`);
+      const response = await fetch(`https://wizedia-backend-2.onrender.com/api/pods/recommend?${params}`);
       if (!response.ok) throw new Error('Failed to get recommendations from the Headmistress.');
       const data = await response.json();
       if (data.success) setMcgResults(data);
@@ -165,7 +165,7 @@ const ProfessorPods: React.FC = () => {
     if (!snapeSubject) return;
     setApiState('snape', true, null);
     try {
-      const response = await fetch('http://localhost:5000/api/pods/learning-path', {
+      const response = await fetch('https://wizedia-backend-2.onrender.com/api/pods/learning-path', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -191,7 +191,7 @@ const ProfessorPods: React.FC = () => {
     setApiState('lupin', true, null);
     try {
       const params = new URLSearchParams({ subject: lupinSubject, budget: lupinBudget, format: lupinFormat });
-      const response = await fetch(`http://localhost:5000/api/pods/tutoring?${params}`);
+      const response = await fetch(`https://wizedia-backend-2.onrender.com/api/pods/tutoring?${params}`);
       if (!response.ok) throw new Error('Could not get tutoring guidance. The moon must be full.');
       const data = await response.json();
       if (data.success) setLupinResults(data);
@@ -207,7 +207,7 @@ const ProfessorPods: React.FC = () => {
     if (!hagridQuestion || !hagridSubject) return;
     setApiState('hagrid', true, null);
     try {
-      const response = await fetch('http://localhost:5000/api/pods/ai-tutor', {
+      const response = await fetch('https://wizedia-backend-2.onrender.com/api/pods/ai-tutor', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
